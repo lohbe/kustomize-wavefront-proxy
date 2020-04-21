@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: not-important
+spec:
+  template:
+    spec:
+      containers:
+        - name: wavefront-proxy
+          env:
+            - name: WAVEFRONT_URL
+              value:
+              valueFrom:
+                configMapKeyRef:
+                  name: wavefront-env
+                  key: WAVEFRONT_URL
+            - name: WAVEFRONT_TOKEN
+              value:
+              valueFrom:
+                secretKeyRef:
+                  name: wavefront-token
+                  key: WAVEFRONT_TOKEN      
+          volumeMounts:
+            - name: config
+              mountPath: /etc/wavefront/wavefront-proxy
+      volumes:
+        - name: config
+          configMap:
+            name: wavefront-config

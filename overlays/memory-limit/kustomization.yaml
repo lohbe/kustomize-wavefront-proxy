@@ -1,0 +1,10 @@
+resources:
+- ../../base
+
+configMapGenerator:
+  - name: wavefront-proxy-heap-size
+    literals:
+      - JAVA_HEAP_USAGE="1650m"
+
+patchesStrategicMerge:
+- memory-limit-patch.yaml
