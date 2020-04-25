@@ -15,5 +15,6 @@ jobs:
           helm: 2.16.5
           helmv3: 3.1.2
           command: |
-            echo "Run kubeval"
-            kustomize build base/ | kubeval --strict
+            set -x
+            echo "Run kubeval on all kustomizations"
+            find . -name kustomization.yaml -printf '%h\n' | xargs --max-lines=1 kustomize build | kubeval --strict

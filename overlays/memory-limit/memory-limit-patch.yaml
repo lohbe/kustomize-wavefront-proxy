@@ -14,5 +14,6 @@ spec:
                   name: wavefront-proxy-heap-size
                   key: JAVA_HEAP_USAGE
           resources:
-          limits:
-            memory: "2Gi"
+            limits:
+              memory: "2Gi"
+              
