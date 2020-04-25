@@ -1,4 +1,5 @@
 # Wavefront Proxy Kustomization
+![CI](https://github.com/lohbe/kustomize-wavefront-proxy/workflows/CI/badge.svg)
 
 This repository consolidates advanced configuration of [Wavefront proxy](https://docs.wavefront.com/proxies.html) through [Kustomize](https://kustomize.io). This allows easy reference of configuration parameters and deployment of a customised Wavefront proxy in Kubernetes. This is a good starting point to modify Wavefront proxy deployment to existing automation pipelines, especially if not using the Wavefront [Helm chart](https://docs.wavefront.com/kubernetes.html#kubernetes-quick-install-using-helm).
 
