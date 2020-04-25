@@ -15,6 +15,6 @@ jobs:
           helm: 2.16.5
           helmv3: 3.1.2
           command: |
-            set -x
-            echo "Run kubeval on all kustomizations"
-            find . -name kustomization.yaml -printf '%h\n' | xargs --max-lines=1 kustomize build | kubeval --strict
+            set -ex -o pipefail
+            # Run kubeval on all kustomizations
+            for i in `find . -name kustomization.yaml -exec dirname {} \;`; do kustomize build $i | kubeval --strict --filename=$i; done
