@@ -1,0 +1,17 @@
+# adds a tcpdump sidecar container to wavefront proxy
+# tip: to capture all payload packets (TCP FLAG: PUSH) and decode ASCII,
+# / # tcpdump -A 'tcp port 9411 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)'
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wavefront-proxy
+spec:
+  template:
+    spec:
+      containers:
+        - name: tcpdump
+          image: itsthenetwork/alpine-tcpdump
+          command:
+          - /bin/sleep
+          - 365d
+              
