@@ -16,6 +16,8 @@ This guide assumes that you are familiar with Kustomize and have a ready cluster
 
 `overlays/memory-limit/` - overlays, or "inherits" `base/` and limits memory use of Wavefront proxy by adjusting Java heap size and patching the K8s [container](https://docs.wavefront.com/proxies_configuring.html#configuring-a-proxy-in-a-container) resource limits.
 
+`overlays/tcpdump-sidecar` - injects a tcpdump sidecar to the wavefront proxy pod for troubleshooting.
+
 * Add your own `WAVEFRONT_TOKEN` and `WAVEFRONT_URL` credentials to `base/kustomization.yaml`
 
 * To preview the generated manifest, run in `base/` or `memory-limit/` directory:
